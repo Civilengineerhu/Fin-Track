@@ -11,5 +11,5 @@ echo.
 echo Starting app at: http://localhost:3000
 echo.
 
-start "" http://localhost:3000
+start "" cmd /c "timeout /t 2 /nobreak >nul & start http://localhost:3000"
 call npm run dev

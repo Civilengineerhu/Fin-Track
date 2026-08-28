@@ -52,5 +52,5 @@ echo [3/3] Launching FinTrack Pro in your default browser...
 echo Local Address: http://localhost:3000
 echo.
 
-start "" http://localhost:3000
+start "" cmd /c "timeout /t 3 /nobreak >nul & start http://localhost:3000"
 call npm run dev
