@@ -1,51 +1,52 @@
-# FinTrack Pro - Android APK Build Guide
+# FinTrack Pro - Android & Mobile Deployment Guide
 
-This project is configured with **Capacitor** and **PWA Web Manifest** for 1-click Android app generation.
-
----
-
-## ⚡ Option A: Automated 1-Click Windows Build (Easiest)
-
-1. Export and unzip the project to a folder on your Windows PC (e.g. `C:\Projects\FinTrackPro`).
-2. Double-click the file in the project root:
-   **`BUILD_ANDROID_APK.bat`**
-3. The script will automatically:
-   - Run `npm install`
-   - Build production assets (`npm run build`)
-   - Add and sync the Android platform (`npx cap sync android`)
-   - Launch **Android Studio** directly with the project loaded.
-4. In Android Studio:
-   - Click menu: **Build** ➜ **Build Bundle(s) / APK(s)** ➜ **Build APK(s)**
-   - Click the **"locate"** link in the popup notification to get your `app-debug.apk`.
+This guide provides instructions for compiling **FinTrack Pro** into a native Android APK or installing it as a standalone Progressive Web App (PWA).
 
 ---
 
-## 🛠️ Option B: Manual Command Line
+## 📱 Option A: 1-Click Automated Android APK Build (Windows)
 
-Run inside the project folder:
+1. Ensure **Android Studio** is installed on your computer.
+2. Unzip or clone the repository to your local drive (e.g. `C:\Projects\FinTrackPro`).
+3. Double-click **`BUILD_ANDROID_APK.bat`** in the root directory.
+4. The script will automatically:
+   - Install all required dependencies (`npm install`)
+   - Compile production frontend bundles (`npm run build`)
+   - Synchronize Android native assets (`npx cap sync android`)
+   - Launch **Android Studio** with the project loaded.
+5. In **Android Studio**:
+   - Navigate to menu: **Build** ➜ **Build Bundle(s) / APK(s)** ➜ **Build APK(s)**.
+   - Click the **"locate"** link in the bottom-right notification once the build finishes to find your `app-debug.apk`.
+   - Transfer `app-debug.apk` to your phone and install.
+
+---
+
+## 🛠️ Option B: Manual Command Line Build (macOS / Linux / Windows)
 
 ```bash
-# 1. Install packages
+# 1. Install dependencies
 npm install
 
-# 2. Build production assets
+# 2. Build production web bundle
 npm run build
 
 # 3. Add Android platform (first time only)
 npx cap add android
 
-# 4. Sync web bundle to Android
+# 4. Sync web assets with native project
 npx cap sync android
 
-# 5. Open Android Studio to build APK
+# 5. Open in Android Studio
 npx cap open android
 ```
 
+From Android Studio, click **Run on Device** or use the **Build APK** menu.
+
 ---
 
-## 📱 Option C: Direct Phone Installation (No APK Build Required)
+## 🌐 Option C: Instant PWA Installation (No Compilation Needed)
 
-Open the app URL in Google Chrome on your Android phone:
-`https://ais-pre-bp4wunppvh7ehykqgloscw-895568594616.asia-east1.run.app`
-Tap **Menu (⋮)** ➜ **"Install app"** (or **"Add to Home screen"**).
-The app runs full-screen natively with offline capability.
+1. Open your live app URL (or GitHub Pages URL / Cloud Run URL) in **Google Chrome** on your Android phone.
+2. Tap the three-dot menu (**⋮**) in Chrome.
+3. Tap **"Install app"** or **"Add to Home screen"**.
+4. The application will be added to your app drawer and home screen, running full-screen with offline caching enabled.
