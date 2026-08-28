@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback, use
 import { Workspace, Transaction, FinancialSummary, TransactionFilter, RecurringRule, MonthlyBudget, BudgetSummary } from '../types';
 import { calculateFinancialSummary, calculateBudgetSummary } from '../utils/formatters';
 import { useAuth } from './AuthContext';
+import { apiUrl } from '../utils/api';
 import {
   getOfflineWorkspaces,
   createOfflineWorkspace,
@@ -119,7 +120,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const fetchWorkspaces = useCallback(async () => {
     if (!user) return;
     try {
-      const res = await fetch(`/api/workspaces?userId=${encodeURIComponent(user.id)}&userEmail=${encodeURIComponent(user.email)}`);
+      const res = await fetch(apiUrl(`/api/workspaces?userId=${encodeURIComponent(user.id)}&userEmail=${encodeURIComponent(user.email)}`));
       if (res.ok) {
         const data = await res.json();
         const list: Workspace[] = data.workspaces || [];
@@ -155,7 +156,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const fetchTransactions = useCallback(async (workspaceId: string) => {
     setIsSyncing(true);
     try {
-      const res = await fetch(`/api/workspaces/${workspaceId}/transactions`);
+      const res = await fetch(apiUrl(`/api/workspaces/${workspaceId}/transactions`));
       if (res.ok) {
         const data = await res.json();
         setTransactions(data.transactions || []);
@@ -180,7 +181,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const fetchRecurringRules = useCallback(async () => {
     if (!activeWorkspace) return;
     try {
-      const res = await fetch(`/api/workspaces/${activeWorkspace.id}/recurring`);
+      const res = await fetch(apiUrl(`/api/workspaces/${activeWorkspace.id}/recurring`));
       if (res.ok) {
         const data = await res.json();
         setRecurringRules(data.recurringRules || []);
@@ -201,7 +202,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const fetchBudgets = useCallback(async () => {
     if (!activeWorkspace) return;
     try {
-      const res = await fetch(`/api/workspaces/${activeWorkspace.id}/budgets`);
+      const res = await fetch(apiUrl(`/api/workspaces/${activeWorkspace.id}/budgets`));
       if (res.ok) {
         const data = await res.json();
         setBudgets(data.budgets || []);
@@ -249,7 +250,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     let eventSource: EventSource | null = null;
     try {
-      eventSource = new EventSource(`/api/workspaces/${activeWorkspace.id}/events`);
+      eventSource = new EventSource(apiUrl(`/api/workspaces/${activeWorkspace.id}/events`));
 
       eventSource.addEventListener('connected', () => {
         setIsOfflineMode(false);
@@ -323,7 +324,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     // Try background server sync if online
     try {
-      fetch('/api/workspaces', {
+      fetch(apiUrl('/api/workspaces'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...data, user }),
@@ -342,7 +343,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     // Try background server update
     try {
-      fetch(`/api/workspaces/${id}`, {
+      fetch(apiUrl(`/api/workspaces/${id}`), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updates),
@@ -406,7 +407,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     // Try background server sync
     try {
-      fetch(`/api/workspaces/${activeWorkspace.id}/transactions`, {
+      fetch(apiUrl(`/api/workspaces/${activeWorkspace.id}/transactions`), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...data, user }),
@@ -426,7 +427,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
 
     try {
-      fetch(`/api/workspaces/${activeWorkspace.id}/transactions/${txId}`, {
+      fetch(apiUrl(`/api/workspaces/${activeWorkspace.id}/transactions/${txId}`), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...updates, user }),
@@ -444,7 +445,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setLastSyncTime(new Date());
 
     try {
-      fetch(`/api/workspaces/${activeWorkspace.id}/transactions/${txId}`, {
+      fetch(apiUrl(`/api/workspaces/${activeWorkspace.id}/transactions/${txId}`), {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user }),
@@ -464,7 +465,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
 
     try {
-      fetch(`/api/workspaces/${activeWorkspace.id}/transactions/${txId}/repay`, {
+      fetch(apiUrl(`/api/workspaces/${activeWorkspace.id}/transactions/${txId}/repay`), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount, date, comment, user }),
@@ -481,7 +482,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setRecurringRules((prev) => [newRule, ...prev]);
 
     try {
-      fetch(`/api/workspaces/${activeWorkspace.id}/recurring`, {
+      fetch(apiUrl(`/api/workspaces/${activeWorkspace.id}/recurring`), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...data, user }),
@@ -502,7 +503,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     try {
       if (activeWorkspace) {
-        fetch(`/api/workspaces/${activeWorkspace.id}/recurring/${ruleId}`, {
+        fetch(apiUrl(`/api/workspaces/${activeWorkspace.id}/recurring/${ruleId}`), {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...updates, user }),
@@ -519,7 +520,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     try {
       if (activeWorkspace) {
-        fetch(`/api/workspaces/${activeWorkspace.id}/recurring/${ruleId}`, {
+        fetch(apiUrl(`/api/workspaces/${activeWorkspace.id}/recurring/${ruleId}`), {
           method: 'DELETE',
         }).catch(() => {});
       }
@@ -584,7 +585,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
     });
 
     try {
-      fetch(`/api/workspaces/${activeWorkspace.id}/budgets`, {
+      fetch(apiUrl(`/api/workspaces/${activeWorkspace.id}/budgets`), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -608,7 +609,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setBudgets((prev) => prev.filter((b) => b.id !== budgetId && b.month !== budgetId));
 
     try {
-      fetch(`/api/workspaces/${activeWorkspace.id}/budgets/${budgetId}`, {
+      fetch(apiUrl(`/api/workspaces/${activeWorkspace.id}/budgets/${budgetId}`), {
         method: 'DELETE',
       }).catch(() => {});
     } catch {}

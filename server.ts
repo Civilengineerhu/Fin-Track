@@ -837,9 +837,62 @@ function broadcastToWorkspace(workspaceId: string, eventType: string, payload: a
 
 export async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
-  app.use(express.json());
+  // CORS middleware for remote GitHub/Cloud access
+  app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    if (req.method === "OPTIONS") {
+      return res.sendStatus(200);
+    }
+    next();
+  });
+
+  app.use(express.json({ limit: "50mb" }));
+
+  // Server health and diagnostic info
+  app.get("/api/health", (_req: Request, res: Response) => {
+    res.json({
+      status: "ok",
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+      version: "2.0.0",
+      nodeEnv: process.env.NODE_ENV || "development"
+    });
+  });
+
+  app.get("/api/server-info", (_req: Request, res: Response) => {
+    const db = loadDb();
+    res.json({
+      name: "FinTrack Pro Server",
+      status: "online",
+      version: "2.0.0",
+      nodeVersion: process.version,
+      platform: process.platform,
+      port: PORT,
+      storage: {
+        file: DB_FILE,
+        workspacesCount: (db.workspaces || []).length,
+        transactionsCount: (db.transactions || []).length,
+        usersCount: (db.users || []).length,
+        recurringRulesCount: (db.recurringRules || []).length,
+        budgetsCount: (db.budgets || []).length,
+      },
+      features: [
+        "Real-Time Multi-User Collaboration (SSE)",
+        "Workspace Multi-Currency Support",
+        "Automated SIP & Recurring Expenses Engine",
+        "Category & Total Monthly Budgets",
+        "Debt & Repayment Ledger Tracking",
+        "AI Financial Advisor & Gemini Assistant",
+        "Offline-First Sync & Full JSON Backups"
+      ],
+      connectedClients: sseClients.length,
+      timestamp: new Date().toISOString()
+    });
+  });
 
   // SSE endpoint for live multi-user synchronization
   app.get("/api/workspaces/:workspaceId/events", (req: Request, res: Response) => {

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  fintrack-pro:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fintrack-pro-server
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    volumes:
+      - fintrack_data:/app/data
+
+volumes:
+  fintrack_data:
+    driver: local
