@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@layer utilities {
+  /* Hide scrollbar for clean UI navigation rows */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Comprehensive Print Optimization Rules */
+@media print {
+  @page {
+    size: auto;
+    margin: 12mm 14mm 12mm 14mm;
+  }
+
+  /* Reset all background dark modes to crisp clean white and high contrast black text */
+  html, body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+  }
+
+  /* Hide app navigation, modals backdrop, filter toolbars, buttons, action bars */
+  header,
+  nav,
+  button,
+  .print\:hidden,
+  #report-filter-panel,
+  #workspace-switch-dropdown,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Unroll scrollable tables so entire ledger is printed without cutting off */
+  .overflow-x-auto,
+  .overflow-y-auto,
+  div[class*="overflow-"] {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  /* Make sure borders and cards print cleanly */
+  #printable-financial-statement {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+}
+

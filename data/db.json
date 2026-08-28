@@ -1,0 +1,513 @@
+{
+  "users": [
+    {
+      "id": "usr_ashish",
+      "name": "Ashish Chaturvedi",
+      "email": "itsashishchaturvedi@gmail.com",
+      "password": "password123",
+      "avatar": "",
+      "createdAt": "2026-08-28T04:35:22.471Z"
+    },
+    {
+      "id": "usr_sarah",
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@example.com",
+      "password": "password123",
+      "avatar": "",
+      "createdAt": "2026-08-28T04:35:22.471Z"
+    },
+    {
+      "id": "usr_alex",
+      "name": "Alex Rivera",
+      "email": "alex.rivera@example.com",
+      "password": "password123",
+      "avatar": "",
+      "createdAt": "2026-08-28T04:35:22.471Z"
+    }
+  ],
+  "workspaces": [
+    {
+      "id": "ws_personal",
+      "name": "Personal Finances",
+      "description": "My personal daily expenses, investments, salary, and savings tracker",
+      "currency": "₹",
+      "code": "MYFIN-101",
+      "ownerId": "usr_ashish",
+      "members": [
+        {
+          "userId": "usr_ashish",
+          "name": "Ashish Chaturvedi",
+          "email": "itsashishchaturvedi@gmail.com",
+          "role": "owner",
+          "joinedAt": "2026-07-29T04:35:22.471Z"
+        }
+      ],
+      "initialFund": 150000,
+      "initialFundComment": "Opening savings balance from HDFC Bank Account",
+      "initialFundDate": "2026-08-03",
+      "initialFundSource": "HDFC Savings Account",
+      "createdAt": "2026-07-29T04:35:22.471Z",
+      "updatedAt": "2026-08-28T04:35:22.471Z"
+    },
+    {
+      "id": "ws_shared_flat",
+      "name": "Apartment 4B Shared Budget",
+      "description": "Shared household expenses, groceries, utilities, and joint investments with roommates",
+      "currency": "₹",
+      "code": "FLAT-402",
+      "ownerId": "usr_ashish",
+      "members": [
+        {
+          "userId": "usr_ashish",
+          "name": "Ashish Chaturvedi",
+          "email": "itsashishchaturvedi@gmail.com",
+          "role": "owner",
+          "joinedAt": "2026-08-08T04:35:22.471Z"
+        },
+        {
+          "userId": "usr_sarah",
+          "name": "Sarah Jenkins",
+          "email": "sarah.jenkins@example.com",
+          "role": "member",
+          "joinedAt": "2026-08-10T04:35:22.471Z"
+        },
+        {
+          "userId": "usr_alex",
+          "name": "Alex Rivera",
+          "email": "alex.rivera@example.com",
+          "role": "member",
+          "joinedAt": "2026-08-13T04:35:22.471Z"
+        }
+      ],
+      "initialFund": 30000,
+      "initialFundComment": "Joint apartment reserve pool fund",
+      "initialFundDate": "2026-08-08",
+      "initialFundSource": "Shared Pool Contribution",
+      "createdAt": "2026-08-08T04:35:22.471Z",
+      "updatedAt": "2026-08-28T04:35:22.471Z"
+    }
+  ],
+  "invites": [],
+  "transactions": [
+    {
+      "id": "tx_1",
+      "workspaceId": "ws_personal",
+      "type": "income",
+      "category": "salary",
+      "amount": 125000,
+      "date": "2026-08-06",
+      "description": "₹1,25,000 received as monthly salary from Tech Innovations Pvt Ltd",
+      "sourceOrPerson": "Tech Innovations Pvt Ltd",
+      "paymentMethod": "Bank Transfer",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-06T04:35:22.471Z",
+      "updatedAt": "2026-08-06T04:35:22.471Z"
+    },
+    {
+      "id": "tx_2",
+      "workspaceId": "ws_personal",
+      "type": "income",
+      "category": "other_income",
+      "amount": 18500,
+      "date": "2026-08-14",
+      "description": "Freelance UI/UX design project milestone payout for client SparkLab",
+      "sourceOrPerson": "SparkLab Studio",
+      "paymentMethod": "UPI",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-14T04:35:22.471Z",
+      "updatedAt": "2026-08-14T04:35:22.471Z"
+    },
+    {
+      "id": "tx_3",
+      "workspaceId": "ws_personal",
+      "type": "income",
+      "category": "other_income",
+      "amount": 3200,
+      "date": "2026-08-21",
+      "description": "Quarterly dividend & fixed deposit interest credited to bank",
+      "sourceOrPerson": "ICICI Direct & HDFC",
+      "paymentMethod": "Net Banking",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-21T04:35:22.471Z",
+      "updatedAt": "2026-08-21T04:35:22.471Z"
+    },
+    {
+      "id": "tx_4",
+      "workspaceId": "ws_personal",
+      "type": "expense",
+      "category": "groceries",
+      "amount": 4650,
+      "date": "2026-08-08",
+      "description": "₹4,650 spent on monthly organic groceries & pantry essentials at Nature's Basket",
+      "sourceOrPerson": "Nature's Basket",
+      "paymentMethod": "Credit Card",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-08T04:35:22.471Z",
+      "updatedAt": "2026-08-08T04:35:22.471Z"
+    },
+    {
+      "id": "tx_5",
+      "workspaceId": "ws_personal",
+      "type": "expense",
+      "category": "groceries",
+      "amount": 1420,
+      "date": "2026-08-23",
+      "description": "₹1,420 spent on fresh fruits, dairy, and veggies at Reliance Smart",
+      "sourceOrPerson": "Reliance Smart",
+      "paymentMethod": "UPI",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-23T04:35:22.471Z",
+      "updatedAt": "2026-08-23T04:35:22.471Z"
+    },
+    {
+      "id": "tx_6",
+      "workspaceId": "ws_personal",
+      "type": "expense",
+      "category": "travel",
+      "amount": 3800,
+      "date": "2026-08-12",
+      "description": "Flight ticket fuel charge and metro smart card auto-topup for commute",
+      "sourceOrPerson": "IndiGo / Metro Rail",
+      "paymentMethod": "Credit Card",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-12T04:35:22.471Z",
+      "updatedAt": "2026-08-12T04:35:22.471Z"
+    },
+    {
+      "id": "tx_7",
+      "workspaceId": "ws_personal",
+      "type": "expense",
+      "category": "education",
+      "amount": 5999,
+      "date": "2026-08-16",
+      "description": "Annual full-stack engineering certification course & ebook subscriptions",
+      "sourceOrPerson": "O'Reilly & Coursera",
+      "paymentMethod": "Credit Card",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-16T04:35:22.471Z",
+      "updatedAt": "2026-08-16T04:35:22.471Z"
+    },
+    {
+      "id": "tx_8",
+      "workspaceId": "ws_personal",
+      "type": "expense",
+      "category": "health",
+      "amount": 2450,
+      "date": "2026-08-19",
+      "description": "Routine health checkup, vitamins & preventive wellness medicines",
+      "sourceOrPerson": "Apollo Pharmacy",
+      "paymentMethod": "UPI",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-19T04:35:22.471Z",
+      "updatedAt": "2026-08-19T04:35:22.471Z"
+    },
+    {
+      "id": "tx_9",
+      "workspaceId": "ws_personal",
+      "type": "expense",
+      "category": "hobby",
+      "amount": 3200,
+      "date": "2026-08-24",
+      "description": "Photography gear filter kit and outdoor hiking trail entrance pass",
+      "sourceOrPerson": "Decathlon & Amazon",
+      "paymentMethod": "Debit Card",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-24T04:35:22.471Z",
+      "updatedAt": "2026-08-24T04:35:22.471Z"
+    },
+    {
+      "id": "tx_10",
+      "workspaceId": "ws_personal",
+      "type": "expense",
+      "category": "miscellaneous",
+      "amount": 1850,
+      "date": "2026-08-26",
+      "description": "Home internet broadband bill and streaming cloud subscriptions",
+      "sourceOrPerson": "Airtel Fiber",
+      "paymentMethod": "UPI",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-26T04:35:22.471Z",
+      "updatedAt": "2026-08-26T04:35:22.471Z"
+    },
+    {
+      "id": "tx_11",
+      "workspaceId": "ws_personal",
+      "type": "investment",
+      "category": "sip",
+      "investmentType": "sip",
+      "amount": 15000,
+      "date": "2026-08-10",
+      "description": "Monthly automated SIP in Parag Parikh Flexi Cap & Nifty 50 Index Fund",
+      "platformOrInstitution": "Groww",
+      "paymentMethod": "Net Banking",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-10T04:35:22.471Z",
+      "updatedAt": "2026-08-10T04:35:22.471Z"
+    },
+    {
+      "id": "tx_12",
+      "workspaceId": "ws_personal",
+      "type": "investment",
+      "category": "mutual_funds",
+      "investmentType": "mutual_funds",
+      "amount": 10000,
+      "date": "2026-08-13",
+      "description": "Lump-sum allocation in Mirae Asset Large Cap Fund during market dip",
+      "platformOrInstitution": "Zerodha Coin",
+      "paymentMethod": "Net Banking",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-13T04:35:22.471Z",
+      "updatedAt": "2026-08-13T04:35:22.471Z"
+    },
+    {
+      "id": "tx_13",
+      "workspaceId": "ws_personal",
+      "type": "investment",
+      "category": "stocks",
+      "investmentType": "stocks",
+      "amount": 22000,
+      "date": "2026-08-18",
+      "description": "Blue-chip technology & renewable energy equities accumulation",
+      "platformOrInstitution": "Zerodha Kite",
+      "paymentMethod": "UPI",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-18T04:35:22.471Z",
+      "updatedAt": "2026-08-18T04:35:22.471Z"
+    },
+    {
+      "id": "tx_14",
+      "workspaceId": "ws_personal",
+      "type": "investment",
+      "category": "fixed_deposits",
+      "investmentType": "fixed_deposits",
+      "amount": 25000,
+      "date": "2026-08-22",
+      "description": "1-year compounding fixed deposit booked at 7.75% p.a. interest",
+      "platformOrInstitution": "HDFC Bank",
+      "paymentMethod": "Bank Transfer",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-22T04:35:22.471Z",
+      "updatedAt": "2026-08-22T04:35:22.471Z"
+    },
+    {
+      "id": "tx_15",
+      "workspaceId": "ws_personal",
+      "type": "lent",
+      "category": "money_lent",
+      "amount": 8000,
+      "date": "2026-08-09",
+      "description": "₹8,000 lent to Rahul Sharma for medical urgency and vehicle repair",
+      "sourceOrPerson": "Rahul Sharma",
+      "expectedRepaymentDate": "2026-09-12",
+      "repaymentStatus": "partially_repaid",
+      "repaidAmount": 3000,
+      "repayments": [
+        {
+          "id": "rep_1",
+          "amount": 3000,
+          "date": "2026-08-25",
+          "comment": "Initial partial repayment sent via GPay",
+          "addedBy": {
+            "id": "usr_ashish",
+            "name": "Ashish Chaturvedi",
+            "email": "itsashishchaturvedi@gmail.com"
+          },
+          "createdAt": "2026-08-25T04:35:22.471Z"
+        }
+      ],
+      "paymentMethod": "UPI",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-09T04:35:22.471Z",
+      "updatedAt": "2026-08-25T04:35:22.471Z"
+    },
+    {
+      "id": "tx_16",
+      "workspaceId": "ws_personal",
+      "type": "lent",
+      "category": "money_lent",
+      "amount": 5000,
+      "date": "2026-08-17",
+      "description": "₹5,000 lent to Vikram Patel for laptop repair",
+      "sourceOrPerson": "Vikram Patel",
+      "expectedRepaymentDate": "2026-09-17",
+      "repaymentStatus": "pending",
+      "repaidAmount": 0,
+      "repayments": [],
+      "paymentMethod": "UPI",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-17T04:35:22.471Z",
+      "updatedAt": "2026-08-17T04:35:22.471Z"
+    },
+    {
+      "id": "tx_17",
+      "workspaceId": "ws_personal",
+      "type": "borrowed",
+      "category": "money_borrowed",
+      "amount": 10000,
+      "date": "2026-08-11",
+      "description": "₹10,000 borrowed from Amit Verma for urgent equipment purchase before invoice clearance",
+      "sourceOrPerson": "Amit Verma",
+      "expectedRepaymentDate": "2026-09-07",
+      "repaymentStatus": "partially_repaid",
+      "repaidAmount": 5000,
+      "repayments": [
+        {
+          "id": "rep_2",
+          "amount": 5000,
+          "date": "2026-08-27",
+          "comment": "Repaid ₹5,000 after client project invoice received",
+          "addedBy": {
+            "id": "usr_ashish",
+            "name": "Ashish Chaturvedi",
+            "email": "itsashishchaturvedi@gmail.com"
+          },
+          "createdAt": "2026-08-27T04:35:22.471Z"
+        }
+      ],
+      "paymentMethod": "UPI",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-11T04:35:22.471Z",
+      "updatedAt": "2026-08-27T04:35:22.471Z"
+    },
+    {
+      "id": "tx_flat_1",
+      "workspaceId": "ws_shared_flat",
+      "type": "expense",
+      "category": "groceries",
+      "amount": 6800,
+      "date": "2026-08-16",
+      "description": "Monthly bulk kitchen groceries, cooking oil, spices & cleaning supplies for Apartment 4B",
+      "sourceOrPerson": "DMart Mega Store",
+      "paymentMethod": "UPI",
+      "createdBy": {
+        "id": "usr_sarah",
+        "name": "Sarah Jenkins",
+        "email": "sarah.jenkins@example.com"
+      },
+      "createdAt": "2026-08-16T04:35:22.471Z",
+      "updatedAt": "2026-08-16T04:35:22.471Z"
+    },
+    {
+      "id": "tx_flat_2",
+      "workspaceId": "ws_shared_flat",
+      "type": "expense",
+      "category": "miscellaneous",
+      "amount": 2400,
+      "date": "2026-08-20",
+      "description": "High-speed 300Mbps fiber internet & water purifier maintenance bill",
+      "sourceOrPerson": "Airtel / Urban Company",
+      "paymentMethod": "Credit Card",
+      "createdBy": {
+        "id": "usr_ashish",
+        "name": "Ashish Chaturvedi",
+        "email": "itsashishchaturvedi@gmail.com"
+      },
+      "createdAt": "2026-08-20T04:35:22.471Z",
+      "updatedAt": "2026-08-20T04:35:22.471Z"
+    },
+    {
+      "id": "tx_flat_3",
+      "workspaceId": "ws_shared_flat",
+      "type": "income",
+      "category": "other_income",
+      "amount": 15000,
+      "date": "2026-08-13",
+      "description": "Sarah's monthly contribution to shared apartment expenditure pool",
+      "sourceOrPerson": "Sarah Jenkins",
+      "paymentMethod": "UPI",
+      "createdBy": {
+        "id": "usr_sarah",
+        "name": "Sarah Jenkins",
+        "email": "sarah.jenkins@example.com"
+      },
+      "createdAt": "2026-08-13T04:35:22.471Z",
+      "updatedAt": "2026-08-13T04:35:22.471Z"
+    },
+    {
+      "id": "tx_flat_4",
+      "workspaceId": "ws_shared_flat",
+      "type": "income",
+      "category": "other_income",
+      "amount": 15000,
+      "date": "2026-08-13",
+      "description": "Alex's monthly contribution to shared apartment expenditure pool",
+      "sourceOrPerson": "Alex Rivera",
+      "paymentMethod": "UPI",
+      "createdBy": {
+        "id": "usr_alex",
+        "name": "Alex Rivera",
+        "email": "alex.rivera@example.com"
+      },
+      "createdAt": "2026-08-13T04:35:22.471Z",
+      "updatedAt": "2026-08-13T04:35:22.471Z"
+    }
+  ]
+}

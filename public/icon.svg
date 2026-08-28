@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#0d9488" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#ecfdf5" stop-opacity="0.85" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#064e3b" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- App Rounded Base Container -->
+  <rect x="32" y="32" width="448" height="448" rx="108" fill="url(#bgGrad)" filter="url(#dropShadow)" />
+  
+  <!-- Subtle Internal Border / Sheen -->
+  <rect x="36" y="36" width="440" height="440" rx="104" fill="none" stroke="#ffffff" stroke-width="4" stroke-opacity="0.3" />
+
+  <!-- Wallet Body Shape -->
+  <rect x="110" y="148" width="292" height="216" rx="36" fill="url(#cardGrad)" filter="url(#dropShadow)" />
+
+  <!-- Top Inset Card / Bill -->
+  <path d="M150 148 V128 C150 114 162 104 176 104 H336 C350 104 362 114 362 128 V148 Z" fill="#a7f3d0" />
+
+  <!-- Wallet Flap Pocket -->
+  <path d="M280 200 H398 C404 200 408 206 408 212 V298 C408 304 404 310 398 310 H280 C256 310 236 286 236 255 C236 224 256 200 280 200 Z" fill="#047857" />
+  
+  <!-- Gold Magnetic Clasp / Coin Button -->
+  <circle cx="286" cy="255" r="22" fill="url(#goldGrad)" />
+  <circle cx="286" cy="255" r="14" fill="#d97706" />
+
+  <!-- Currency / Growth Arrow Accent inside Wallet -->
+  <!-- Upward Trend Chart Line -->
+  <path d="M148 290 L188 250 L220 274 L258 226" fill="none" stroke="#059669" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Arrow Head -->
+  <path d="M242 226 H260 V244" fill="none" stroke="#059669" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Bottom Accent Text / Brand Mark Dots -->
+  <circle cx="152" cy="392" r="8" fill="#ffffff" fill-opacity="0.8" />
+  <circle cx="178" cy="392" r="8" fill="#ffffff" fill-opacity="0.8" />
+  <circle cx="204" cy="392" r="8" fill="#ffffff" fill-opacity="0.8" />
+</svg>

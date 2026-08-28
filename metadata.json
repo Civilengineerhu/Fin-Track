@@ -1,0 +1,8 @@
+{
+  "name": "Daily Expense & Personal Finance Tracker",
+  "description": "A modern, multi-user personal and shared finance tracking application for managing income, expenses, SIP investments, lending, borrowing, and real-time financial balance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "appId": "com.fintrack.app",
+  "appName": "FinTrack Pro",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}
