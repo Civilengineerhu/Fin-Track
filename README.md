@@ -160,27 +160,32 @@ npm start
 
 ---
 
-## 💻 One-Click Windows & Desktop Setup
+## 💻 1-Click Windows PC Installation & Desktop App
 
-For standalone offline desktop usage on Windows without manual terminal commands:
+For zero-configuration offline desktop usage on Windows:
 
-1. **Double-click `INSTALL_WINDOWS_APP.bat`**:
+1. Open the **`Single_Click_Install_PC`** folder.
+2. Double-click **`1-Click_Install_and_Launch_PC.bat`**:
    - Automatically installs required dependencies.
    - Creates a **"FinTrack Pro (Offline)"** shortcut directly on your Windows Desktop.
-   - Launches the local application in your default browser.
-2. For subsequent launches, double-click the desktop shortcut or **`START_LOCAL_OFFLINE.bat`**.
+   - Launches the local application in your default browser at `http://localhost:3000`.
+3. For subsequent launches, simply double-click the **"FinTrack Pro (Offline)"** Desktop icon or **`Start_FinTrack_Pro.bat`**.
 
 ---
 
-## 📱 Android APK & Mobile PWA Setup
+## 📱 1-Click Android APK & Mobile Installation
 
-### Option 1: Build Native Android APK with Android Studio
-1. Double click **`BUILD_ANDROID_APK.bat`** (or run `npm run build && npx cap sync android && npx cap open android`).
-2. Android Studio will open with the pre-configured project (`com.fintrack.app`).
-3. In Android Studio, go to **Build** ➜ **Build Bundle(s) / APK(s)** ➜ **Build APK(s)**.
-4. Collect the generated `app-debug.apk` and install it on your Android phone.
+### Option 1: 1-Click APK Builder (Windows)
+1. Open the **`Single_Click_Install_Android`** folder.
+2. Double-click **`1-Click_Build_Android_APK.bat`**.
+3. It will automatically build the production assets, sync the Capacitor project, and compile **`FinTrack_Pro.apk`**.
+4. Transfer `FinTrack_Pro.apk` to your phone and install!
 
-### Option 2: Direct Progressive Web App (PWA) Install
+### Option 2: Direct Install to Connected Phone (USB Debugging)
+1. Connect your Android phone with USB Debugging enabled.
+2. Double-click **`1-Click_Install_To_Connected_Phone.bat`** in `Single_Click_Install_Android`.
+
+### Option 3: Direct Progressive Web App (PWA) Install
 1. Open the application URL in Google Chrome on your Android or iOS device.
 2. Tap the browser menu (**⋮** or Share button) ➜ Tap **"Install app"** or **"Add to Home Screen"**.
 3. Launch the app like a native mobile app with full-screen view and offline functionality.
@@ -266,9 +271,14 @@ The built-in Express server provides RESTful endpoints for multi-device sync:
 │   └── index.css               # Global styles & Tailwind CSS
 ├── server.ts                   # Express.js backend server
 ├── capacitor.config.json       # Android Capacitor configuration
-├── BUILD_ANDROID_APK.bat       # 1-Click Android build script
-├── INSTALL_WINDOWS_APP.bat     # 1-Click Windows desktop installer
-├── START_LOCAL_OFFLINE.bat     # Windows offline local server launcher
+├── Single_Click_Install_PC/    # 💻 1-Click Windows PC Installation & Launchers
+│   ├── 1-Click_Install_and_Launch_PC.bat # Auto-installer & desktop shortcut creator
+│   ├── Start_FinTrack_Pro.bat  # Fast launcher for daily use
+│   └── README_PC_INSTALL.md    # Step-by-step PC instructions
+├── Single_Click_Install_Android/ # 📱 1-Click Android APK & USB Installer
+│   ├── 1-Click_Build_Android_APK.bat # Automatic APK builder & Studio launcher
+│   ├── 1-Click_Install_To_Connected_Phone.bat # Direct ADB USB installation
+│   └── README_ANDROID_INSTALL.md # Android & mobile deployment guide
 ├── package.json                # Dependencies and build scripts
 └── vite.config.ts              # Vite bundler configuration
 ```
